@@ -72,6 +72,7 @@ import numpy as np
 import pandas as pd
 from sklearn.covariance import EmpiricalCovariance
 from sklearn.preprocessing import StandardScaler
+from pdb import set_trace as bp
 
 
 __author__ = 'Gregory Giecold and Lionel Ouaknin'
@@ -593,7 +594,8 @@ def optimalShrinkage(X, return_covariance=False, method='rie'):
     for lambda_hat, eigvec in zip(lambda_hats, eigvecs):
         eigvec = eigvec.reshape(-1, 1)
         E_RIE += lambda_hat * eigvec.dot(eigvec.T)
-        
+
+    # bp()
     tmp = 1./np.sqrt(np.diag(E_RIE))
     E_RIE *= tmp
     E_RIE *= tmp.reshape(-1, 1)
